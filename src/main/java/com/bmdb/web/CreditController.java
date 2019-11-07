@@ -30,7 +30,7 @@ public class CreditController {
 		try {
 			jr = JsonResponse.getInstance(creditRepo.findAll());
 		} catch(Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
 		}
 		return jr;
 	}
@@ -42,7 +42,8 @@ public class CreditController {
 		try {
 			jr = JsonResponse.getInstance(creditRepo.findById(id));
 		} catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -56,9 +57,11 @@ public class CreditController {
 		} 
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -76,9 +79,11 @@ public class CreditController {
 		} 
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -95,7 +100,8 @@ public class CreditController {
 				jr = JsonResponse.getInstance("Error deleting credit! Credit: " + id + " does not exist!");
 			}
 		} catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}

@@ -22,7 +22,8 @@ public class MovieController {
 		try {
 			jr = JsonResponse.getInstance(movieRepo.findAll());
 		} catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -34,7 +35,8 @@ public class MovieController {
 		try {
 			jr = JsonResponse.getInstance(movieRepo.findById(id));
 		} catch(Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -48,9 +50,11 @@ public class MovieController {
 		} 
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -68,9 +72,11 @@ public class MovieController {
 		} 
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
@@ -89,9 +95,11 @@ public class MovieController {
 		} 
 		catch (DataIntegrityViolationException dive) {
 			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+			dive.printStackTrace();
 		}
 		catch (Exception e) {
-			jr = JsonResponse.getInstance(e.getMessage());
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
 		}
 		return jr;
 	}
