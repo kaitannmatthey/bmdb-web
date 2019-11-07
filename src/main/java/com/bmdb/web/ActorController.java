@@ -86,7 +86,11 @@ public class ActorController {
 			} else {
 				jr = JsonResponse.getInstance("Error deleting actor! Actor: " + id + " does not exist!");
 			}
-		} catch (Exception e) {
+		} 
+		catch (DataIntegrityViolationException dive) {
+			jr = JsonResponse.getInstance(dive.getRootCause().getMessage());
+		}
+		catch (Exception e) {
 			jr = JsonResponse.getInstance(e.getMessage());
 		}
 		return jr;
