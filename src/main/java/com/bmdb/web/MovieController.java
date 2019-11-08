@@ -41,6 +41,18 @@ public class MovieController {
 		return jr;
 	}
 	
+	@GetMapping("list-movies-for-rating")
+	public JsonResponse listMoviesForRating(@RequestParam String rating) {
+		JsonResponse jr = null;
+		try {
+			jr = JsonResponse.getInstance(movieRepo.findByRating(rating));
+		} catch(Exception e) {
+			jr = JsonResponse.getInstance(e);
+			e.printStackTrace();
+		}
+		return jr;
+	}
+	
 	// Add - Adds New Movie
 	@PostMapping("/")
 	public JsonResponse addMovie(@RequestBody Movie m) {
